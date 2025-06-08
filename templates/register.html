@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Sistem Rekomendasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .register-header h2 {
+            color: #2d3748;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .register-header p {
+            color: #718096;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input:hover {
+            border-color: #cbd5e0;
+            background: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 18px;
+        }
+
+        .form-group:has(.form-input:focus) .input-icon {
+            color: #667eea;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .login-link p {
+            color: #718096;
+            margin-bottom: 10px;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #5a67d8;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            .register-header h2 {
+                font-size: 24px;
+            }
+            
+            .form-input {
+                padding: 12px 15px;
+            }
+            
+            .submit-btn {
+                padding: 14px;
+            }
+        }
+
+        /* Loading Animation */
+        .submit-btn.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Form Validation Styles */
+        .form-input:invalid:not(:placeholder-shown) {
+            border-color: #e53e3e;
+            background-color: #fed7d7;
+        }
+
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: #38a169;
+            background-color: #f0fff4;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h2>Daftar Akun</h2>
+            <p>Lengkapi profil Anda untuk rekomendasi terbaik</p>
+        </div>
+
+        <form method="POST" id="registerForm">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" name="name" id="name" class="form-input" required placeholder="Masukkan nama lengkap Anda">
+                <span class="input-icon">👤</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-input" required placeholder="contoh@email.com">
+                <span class="input-icon">📧</span>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Umur</label>
+                <input type="number" name="age" id="age" class="form-input" required min="13" max="100" placeholder="Masukkan umur Anda">
+                <span class="input-icon">🎂</span>
+            </div>
+
+            <div class="form-group">
+                <label for="profession">Profesi</label>
+                <input type="text" name="profession" id="profession" class="form-input" required placeholder="Contoh: Software Engineer">
+                <span class="input-icon">💼</span>
+            </div>
+
+            <div class="form-group">
+                <label for="business_type">Jenis Usaha</label>
+                <input type="text" name="business_type" id="business_type" class="form-input" required placeholder="Contoh: Retail, F&B, Jasa">
+                <span class="input-icon">🏢</span>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Daftar Sekarang
+            </button>
+        </form>
+
+        <div class="login-link">
+            <p>Sudah punya akun?</p>
+            <a href="/login">Masuk di sini</a>
+        </div>
+    </div>
+
+    <script>
+        // Form submission with loading animation
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            // Reset button after form submission (in case of validation errors)
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+
+        // Real-time form validation feedback
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = '#38a169';
+                    this.style.backgroundColor = '#f0fff4';
+                } else if (this.value !== '') {
+                    this.style.borderColor = '#e53e3e';
+                    this.style.backgroundColor = '#fed7d7';
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.checkValidity() && this.value !== '') {
+                    this.style.borderColor = '#38a169';
+                    this.style.backgroundColor = '#f0fff4';
+                } else {
+                    this.style.borderColor = '#e2e8f0';
+                    this.style.backgroundColor = '#f8fafc';
+                }
+            });
+        });
+
+        // Auto-format business type suggestions
+        const businessTypeInput = document.getElementById('business_type');
+        const businessSuggestions = ['Retail', 'F&B', 'Jasa', 'Teknologi', 'Kesehatan', 'Pendidikan', 'Manufaktur', 'Perdagangan'];
+        
+        businessTypeInput.addEventListener('input', function() {
+            const value = this.value.toLowerCase();
+            if (value.length > 2) {
+                const suggestions = businessSuggestions.filter(s => 
+                    s.toLowerCase().includes(value)
+                );
+                // You can implement autocomplete dropdown here if needed
+            }
+        });
+    </script>
+</body>
+</html>

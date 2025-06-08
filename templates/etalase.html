@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etalase Produk - Sistem Rekomendasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .etalase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Section */
+        .page-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .page-header h2 {
+            color: #2d3748;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .page-subtitle {
+            color: #718096;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* Purchase Section */
+        .purchase-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .section-title {
+            color: #2d3748;
+            font-size: 24px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .purchase-form {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #f093fb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input:hover {
+            border-color: #cbd5e0;
+            background: white;
+        }
+
+        .buy-btn {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            min-width: 120px;
+        }
+
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .buy-btn:hover::before {
+            left: 100%;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(240, 147, 251, 0.4);
+            background: linear-gradient(135deg, #e879f9 0%, #ec4899 100%);
+        }
+
+        .buy-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .recommendations-section .section-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recommendation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .recommendation-card:hover::before {
+            left: 100%;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .recommendation-text {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recommendation-emoji {
+            font-size: 24px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        .empty-state h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Navigation Section */
+        .navigation-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card .nav-card-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .logout-card .nav-card-icon {
+            background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+        }
+
+        .nav-card h4 {
+            color: #2d3748;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .nav-card p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Loading States */
+        .buy-btn.loading {
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .buy-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .success-message {
+            background: #f0fff4;
+            color: #38a169;
+            border: 1px solid #9ae6b4;
+        }
+
+        .error-message {
+            background: #fed7d7;
+            color: #e53e3e;
+            border: 1px solid #feb2b2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .purchase-form {
+                flex-direction: column;
+            }
+
+            .form-group {
+                min-width: 100%;
+            }
+
+            .buy-btn {
+                width: 100%;
+            }
+
+            .page-header h2 {
+                font-size: 26px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .page-header,
+            .purchase-section,
+            .recommendations-section {
+                padding: 25px 20px;
+            }
+
+            .nav-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="etalase-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h2>
+                <div class="header-icon">🛍️</div>
+                Etalase Produk
+            </h2>
+            <div class="page-subtitle">Temukan produk yang Anda butuhkan dan dapatkan rekomendasi cerdas</div>
+        </div>
+
+        <!-- Purchase Section -->
+        <div class="purchase-section">
+            <div class="section-header">
+                <div class="section-icon">🛒</div>
+                <div class="section-title">Beli Produk</div>
+            </div>
+
+            <div class="success-message message" id="successMessage">
+                Produk berhasil dibeli! Sistem sedang menganalisis untuk memberikan rekomendasi...
+            </div>
+
+            <div class="error-message message" id="errorMessage">
+                Terjadi kesalahan. Silakan coba lagi.
+            </div>
+
+            <form method="POST" id="purchaseForm" class="purchase-form">
+                <div class="form-group">
+                    <label for="product" class="form-label">Produk yang ingin dibeli</label>
+                    <input type="text" name="product" id="product" class="form-input" required 
+                           placeholder=" ">
+                </div>
+                <button type="submit" class="buy-btn" id="buyBtn">
+                    🛒 Beli Sekarang
+                </button>
+            </form>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations-section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">Rekomendasi produk setelah pembelian berdasarkan asosiasi:</div>
+            </div>
+
+            {% if recommended %}
+            <ul class="recommendations-grid">
+                {% for product in recommended %}
+                <li class="recommendation-card">
+                    <div class="recommendation-text">
+                        <span class="recommendation-emoji">⭐</span>
+                        {{ product }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-state-icon">🤔</div>
+                <h4>Tidak ada rekomendasi saat ini</h4>
+                <p>Mulai berbelanja untuk mendapatkan rekomendasi produk yang dipersonalisasi berdasarkan asosiasi pembelian!</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="navigation-section">
+            <a href="/dashboard" class="nav-card dashboard-card">
+                <div class="nav-card-icon">🏠</div>
+                <h4>Kembali ke Dashboard</h4>
+                <p>Lihat rekomendasi berdasarkan profil Anda dan kelola akun</p>
+            </a>
+
+            <a href="/logout" class="nav-card logout-card">
+                <div class="nav-card-icon">🚪</div>
+                <h4>Logout</h4>
+                <p>Keluar dari akun Anda dengan aman</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Form submission with loading animation
+        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+            const buyBtn = document.getElementById('buyBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide any existing messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading state
+            buyBtn.classList.add('loading');
+            buyBtn.disabled = true;
+            
+            // Show success message (simulate)
+            setTimeout(() => {
+                successMessage.style.display = 'block';
+            }, 500);
+            
+            // Reset button after some time
+            setTimeout(() => {
+                buyBtn.classList.remove('loading');
+                buyBtn.disabled = false;
+            }, 3000);
+        });
+
+        // Product input suggestions
+        const productInput = document.getElementById('product');
+        const productSuggestions = [
+            
+        ];
+
+        productInput.addEventListener('input', function() {
+            // You can implement autocomplete dropdown here if needed
+            const value = this.value.toLowerCase();
+            if (value.length > 2) {
+                const matches = productSuggestions.filter(s => 
+                    s.toLowerCase().includes(value)
+                );
+                // Implement dropdown UI here if needed
+            }
+        });
+
+        // Add staggered animation for recommendation cards
+        window.addEventListener('load', function() {
+            const recommendationCards = document.querySelectorAll('.recommendation-card');
+            recommendationCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+
+        // Dynamic recommendation emojis
+        const recommendationEmojis = ['⭐', '💎', '🔥', '✨', '🎯', '💯', '🏆', '⚡', '🌟', '💝'];
+        const recommendationEmojiElements = document.querySelectorAll('.recommendation-emoji');
+        
+        recommendationEmojiElements.forEach((emoji, index) => {
+            emoji.textContent = recommendationEmojis[index % recommendationEmojis.length];
+        });
+
+        // Add navigation loading states
+        document.querySelectorAll('.nav-card').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const icon = this.querySelector('.nav-card-icon');
+                const originalContent = icon.innerHTML;
+                
+                // Add loading spinner
+                icon.innerHTML = '<div style="width: 20px; height: 20px; border: 2px solid #f3f3f3; border-top: 2px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite;"></div>';
+                
+                // Reset after timeout
+                setTimeout(() => {
+                    icon.innerHTML = originalContent;
+                }, 2000);
+            });
+        });
+
+        // Form validation
+        productInput.addEventListener('blur', function() {
+            if (this.value.length < 2) {
+                this.style.borderColor = '#e53e3e';
+                this.style.backgroundColor = '#fed7d7';
+            } else {
+                this.style.borderColor = '#38a169';
+                this.style.backgroundColor = '#f0fff4';
+            }
+        });
+
+        productInput.addEventListener('input', function() {
+            if (this.value.length >= 2) {
+                this.style.borderColor = '#38a169';
+                this.style.backgroundColor = '#f0fff4';
+            } else {
+                this.style.borderColor = '#e2e8f0';
+                this.style.backgroundColor = '#f8fafc';
+            }
+        });
+    </script>
+</body>
+</html>

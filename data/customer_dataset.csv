@@ -1,0 +1,151 @@
+customer_id,name,age,profession,business_type
+CUST0001,Prasetyo Haryanto,29,Marketing,Food & Beverage
+CUST0002,"Asmianto Hutapea, M.M.",23,Finance,Fashion
+CUST0003,Caturangga Najmudin,39,Marketing,Education
+CUST0004,H. Cemani Wibowo,37,Owner,Retail
+CUST0005,Gilang Aryani,36,Manager,Retail
+CUST0006,Oni Halim,30,Owner,Retail
+CUST0007,Zahra Yuniar,28,HR,Fashion
+CUST0008,Tira Padmasari,56,HR,Food & Beverage
+CUST0009,Novi Ardianto,27,Finance,Fashion
+CUST0010,Dr. Rahayu Dongoran,59,Manager,Consulting
+CUST0011,Vino Ardianto,49,Owner,Food & Beverage
+CUST0012,Hj. Jane Namaga,24,HR,Fashion
+CUST0013,Ciaobella Thamrin,23,HR,Food & Beverage
+CUST0014,Lintang Agustina,27,Owner,Tech Startup
+CUST0015,Dian Anggriawan,35,Freelancer,Education
+CUST0016,Tina Nasyidah,36,Owner,Education
+CUST0017,drg. Aditya Winarno,54,Finance,Retail
+CUST0018,Rahmat Winarno,60,Finance,Tech Startup
+CUST0019,Daruna Narpati,23,Owner,Food & Beverage
+CUST0020,T. Ajiman Natsir,57,Freelancer,Retail
+CUST0021,Rachel Yuniar,34,Marketing,Consulting
+CUST0022,Hamzah Wacana,56,Manager,Fashion
+CUST0023,Hj. Karimah Prayoga,48,HR,Food & Beverage
+CUST0024,Irma Saputra,36,Freelancer,Consulting
+CUST0025,R. Hairyanto Latupono,50,Manager,Fashion
+CUST0026,Artanto Tampubolon,59,Marketing,Tech Startup
+CUST0027,Cut Tari Budiman,39,Finance,Retail
+CUST0028,"Dr. Jarwi Laksita, S.Sos",22,Manager,Retail
+CUST0029,"Tgk. Wani Firgantoro, S.Kom",32,Manager,Education
+CUST0030,Zulfa Wijayanti,49,HR,Education
+CUST0031,Ulva Yulianti,43,Marketing,Fashion
+CUST0032,Karimah Habibi,39,Freelancer,Education
+CUST0033,"Jasmin Mandasari, S.Pt",31,Marketing,Fashion
+CUST0034,Arta Megantara,35,Owner,Retail
+CUST0035,Jamalia Suartini,43,Manager,Retail
+CUST0036,Galar Agustina,28,Freelancer,Food & Beverage
+CUST0037,Xanana Prabowo,27,Marketing,Education
+CUST0038,Kasiyah Prayoga,46,Manager,Consulting
+CUST0039,Iriana Mayasari,28,Manager,Education
+CUST0040,Luhung Fujiati,44,Owner,Education
+CUST0041,Najib Hastuti,44,Marketing,Food & Beverage
+CUST0042,Sakura Damanik,60,Manager,Food & Beverage
+CUST0043,Ayu Hutasoit,38,HR,Retail
+CUST0044,"Melinda Widiastuti, S.T.",24,HR,Consulting
+CUST0045,Eli Prasetya,51,Owner,Education
+CUST0046,Tgk. Unjani Sirait,56,Manager,Tech Startup
+CUST0047,"Tgk. Banawa Usamah, M.Pd",29,Finance,Fashion
+CUST0048,"Tgk. Baktiono Anggriawan, S.Gz",46,Manager,Retail
+CUST0049,"R. Almira Usamah, M.Farm",27,Owner,Education
+CUST0050,"Kamila Lestari, S.Ked",57,HR,Education
+CUST0051,Maras Hutagalung,40,Marketing,Education
+CUST0052,Ulva Wijaya,45,Freelancer,Consulting
+CUST0053,Tari Winarno,58,Finance,Education
+CUST0054,Hilda Wibisono,34,Finance,Retail
+CUST0055,Bakiman Januar,26,Manager,Consulting
+CUST0056,Drajat Putra,24,Owner,Food & Beverage
+CUST0057,Paramita Utama,36,Freelancer,Education
+CUST0058,Maya Utami,40,Freelancer,Consulting
+CUST0059,"Tgk. Eko Mandala, M.TI.",27,Freelancer,Education
+CUST0060,Cut Silvia Mahendra,36,Finance,Consulting
+CUST0061,Sutan Kawaya Rajasa,28,Finance,Food & Beverage
+CUST0062,Tina Putra,46,HR,Consulting
+CUST0063,Lamar Siregar,39,Owner,Retail
+CUST0064,Gilda Fujiati,51,Freelancer,Education
+CUST0065,"R.M. Nugraha Prabowo, M.Kom.",45,Freelancer,Education
+CUST0066,drg. Nova Kusumo,32,HR,Food & Beverage
+CUST0067,"Dadap Setiawan, S.Pt",45,Manager,Consulting
+CUST0068,Kani Nurdiyanti,44,Manager,Tech Startup
+CUST0069,"Wardaya Rahmawati, M.Pd",35,Freelancer,Food & Beverage
+CUST0070,Setya Prasasta,39,Freelancer,Consulting
+CUST0071,Dt. Darmana Habibi,26,Manager,Food & Beverage
+CUST0072,Leo Winarsih,60,Manager,Retail
+CUST0073,Utama Rahayu,32,HR,Food & Beverage
+CUST0074,Ir. Syahrini Nugroho,56,Freelancer,Food & Beverage
+CUST0075,R.A. Sarah Farida,37,HR,Education
+CUST0076,Tina Wahyudin,32,Marketing,Education
+CUST0077,Martaka Situmorang,51,Owner,Food & Beverage
+CUST0078,Ivan Namaga,46,HR,Fashion
+CUST0079,Dalima Suryono,39,HR,Tech Startup
+CUST0080,Purwadi Hartati,57,HR,Education
+CUST0081,Jamal Damanik,36,HR,Fashion
+CUST0082,Endah Mardhiyah,42,HR,Education
+CUST0083,Julia Sirait,25,Owner,Retail
+CUST0084,Daru Iswahyudi,36,Freelancer,Education
+CUST0085,Najwa Prasasta,24,Manager,Food & Beverage
+CUST0086,Keisha Marbun,42,Freelancer,Education
+CUST0087,"Tgk. Bancar Hariyah, M.Kom.",47,Owner,Food & Beverage
+CUST0088,"Maimunah Kusumo, S.T.",39,Freelancer,Retail
+CUST0089,"Laila Lestari, S.Kom",26,HR,Tech Startup
+CUST0090,Natalia Aryani,35,Manager,Consulting
+CUST0091,"Vera Samosir, M.Kom.",58,Finance,Food & Beverage
+CUST0092,Intan Yulianti,42,Freelancer,Fashion
+CUST0093,dr. Hendri Simanjuntak,35,Freelancer,Fashion
+CUST0094,Ir. Gabriella Budiman,53,HR,Tech Startup
+CUST0095,"Vega Farida, M.Kom.",47,HR,Fashion
+CUST0096,Rafi Maheswara,51,Marketing,Food & Beverage
+CUST0097,Saadat Thamrin,31,Finance,Consulting
+CUST0098,Ellis Jailani,38,Owner,Retail
+CUST0099,Budi Usamah,30,Manager,Education
+CUST0100,"Safina Sirait, S.T.",37,HR,Fashion
+CUST0101,Dalima Dabukke,57,Marketing,Consulting
+CUST0102,Citra Nababan,56,Marketing,Consulting
+CUST0103,Dr. Nilam Siregar,38,Finance,Consulting
+CUST0104,T. Artawan Hutapea,59,Owner,Tech Startup
+CUST0105,"Kenari Susanti, S.Pd",49,Marketing,Retail
+CUST0106,"Oskar Marpaung, M.Ak",59,Marketing,Fashion
+CUST0107,"Gina Permadi, M.TI.",47,HR,Food & Beverage
+CUST0108,"Jaiman Pertiwi, S.Pd",45,Owner,Food & Beverage
+CUST0109,R.M. Caturangga Kuswoyo,36,HR,Education
+CUST0110,Vino Namaga,30,Owner,Consulting
+CUST0111,Ghani Damanik,54,Manager,Food & Beverage
+CUST0112,Icha Sihombing,53,Marketing,Food & Beverage
+CUST0113,Gina Anggriawan,27,Finance,Tech Startup
+CUST0114,Kusuma Susanti,25,Manager,Tech Startup
+CUST0115,Cornelia Sihombing,29,Owner,Food & Beverage
+CUST0116,"Karen Habibi, S.Farm",31,HR,Retail
+CUST0117,Drs. Betania Yuliarti,32,Manager,Tech Startup
+CUST0118,"Dodo Pangestu, S.Gz",49,Marketing,Education
+CUST0119,Zulfa Pratama,60,Marketing,Consulting
+CUST0120,Lanjar Budiyanto,26,Freelancer,Education
+CUST0121,"Jaya Nurdiyanti, S.H.",46,Marketing,Fashion
+CUST0122,KH. Aditya Melani,46,Marketing,Food & Beverage
+CUST0123,Luis Purnawati,60,HR,Fashion
+CUST0124,Muhammad Melani,51,Manager,Retail
+CUST0125,"Dr. Almira Sirait, S.Farm",55,Finance,Food & Beverage
+CUST0126,"drg. Titi Natsir, S.H.",38,Manager,Tech Startup
+CUST0127,Laksana Santoso,57,Freelancer,Fashion
+CUST0128,Ifa Damanik,22,Finance,Fashion
+CUST0129,Vega Safitri,29,Manager,Tech Startup
+CUST0130,"Danuja Dongoran, M.Ak",56,Manager,Tech Startup
+CUST0131,Vicky Pertiwi,39,Finance,Food & Beverage
+CUST0132,Ivan Latupono,43,Owner,Tech Startup
+CUST0133,"Irnanto Haryanto, M.Kom.",29,Freelancer,Education
+CUST0134,Ika Latupono,40,HR,Consulting
+CUST0135,Tania Handayani,49,HR,Food & Beverage
+CUST0136,"Cut Citra Zulaika, M.Kom.",32,Owner,Retail
+CUST0137,Tirta Najmudin,51,Manager,Fashion
+CUST0138,Umi Wasita,22,Manager,Fashion
+CUST0139,"Lala Salahudin, S.Ked",38,HR,Tech Startup
+CUST0140,Luwes Hassanah,54,HR,Consulting
+CUST0141,drg. Lulut Pratama,33,HR,Consulting
+CUST0142,drg. Aris Permata,54,Freelancer,Consulting
+CUST0143,Puti Janet Mangunsong,28,Owner,Food & Beverage
+CUST0144,Ulva Wahyuni,41,HR,Food & Beverage
+CUST0145,Bakti Melani,54,Finance,Retail
+CUST0146,"R.A. Raina Haryanti, M.TI.",60,Marketing,Food & Beverage
+CUST0147,"Dewi Mulyani, M.Kom.",34,HR,Tech Startup
+CUST0148,Karja Sihombing,31,Marketing,Education
+CUST0149,Jarwi Rahayu,45,Owner,Retail
+CUST0150,Dagel Kurniawan,32,Finance,Tech Startup
